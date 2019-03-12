@@ -28,14 +28,22 @@ function Header (props) {
     </header>
   )
 }
-const Counter = (props) => {
-  return (
-    <div className = 'counter'>
-      <button className='counter-action increment'>+</button>
-      <span className= 'counter-score'>{props.score}</span>
-      <button className= 'counter-action decrement'>-</button>
-    </div>
-  )
+class Counter extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      score: 0
+    }
+  }
+  render() {
+    return (
+      <div className = 'counter'>
+        <button className='counter-action increment'>+</button>
+        <span className= 'counter-score'>{this.state.score}</span>
+        <button className= 'counter-action decrement'>-</button>
+      </div>
+    )
+  }
 }
 const Player = (props) => {
   return (
@@ -43,7 +51,7 @@ const Player = (props) => {
       <span className='player-name'>
         {props.name}
       </span>
-      <Counter score={props.score}></Counter>
+      <Counter></Counter>
     </div>
   )
 }
@@ -56,7 +64,6 @@ const App = (props) =>{
           player => {
             return  <Player
                     name = {player.name}
-                    score = {player.score}
                     key = {player.id.toString()}
                   />
           }
