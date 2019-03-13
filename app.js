@@ -29,18 +29,22 @@ function Header (props) {
   )
 }
 class Counter extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      score: 0
-    }
+  state = {
+    score: 0
   }
+  incrementScore = () => {
+    this.setState({
+      score: this.state.score +1
+    })
+    console.log(this)
+  }
+
   render() {
     return (
       <div className = 'counter'>
-        <button className='counter-action increment'>+</button>
-        <span className= 'counter-score'>{this.state.score}</span>
         <button className= 'counter-action decrement'>-</button>
+        <span className= 'counter-score'>{this.state.score}</span>
+        <button className='counter-action increment' onClick={this.incrementScore}>+</button>
       </div>
     )
   }
